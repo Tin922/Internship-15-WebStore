@@ -5,3 +5,22 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.select {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.select select {
+  padding: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  width: 10%;
+}
+.select select option {
+  padding: 8px;
+  font-size: 0.9rem;
+}

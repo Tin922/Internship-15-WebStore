@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
-import ProductPageCard from "../Components/ProductPageCard";
-import ProductCard from "../Components/ProductCard/ProductCard";
+import ProductPageCard from "../../Components/ProductPageCard/ProductPageCard";
+import ProductCard from "../../Components/ProductCard/ProductCard";
+import classes from "./index.module.css";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -9,7 +10,6 @@ const ProductPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [relatedProducts, setRelatedProducts] = useState([]);
-  console.log(`Povezni proizovid su : ${relatedProducts}`);
 
   const fetchProduct = async () => {
     try {
@@ -37,8 +37,8 @@ const ProductPage = () => {
   return (
     <>
       {product && <ProductPageCard product={product} />}
-      <div>
-        <p>Možda će vam se svidjeti</p>
+      <p className={classes.recommended}>Možda će vam se svidjeti</p>
+      <div className={classes.products_list}>
         {relatedProducts.map((product) => (
           <ProductCard
             product={product}
