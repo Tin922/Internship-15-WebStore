@@ -1,14 +1,14 @@
 import React from "react";
-import Navigation from "./Components/Navigation/Navigation";
+import Search from "./Components/Search/Search";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NotFoundPage from "./Pages/NotFoundPage";
+import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 import ProductsPage from "./Pages/ProductsPage/ProductsPage";
 import ProductPage from "./Pages/ProductPage/ProductPage";
 import HomePage from "./Pages/HomePage/HomePage";
 function App() {
   return (
     <Router>
-      <Navigation />
+      <Search />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/products" element={<ProductsPage />} />

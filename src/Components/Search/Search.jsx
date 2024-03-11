@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./index.module.css";
 
-const Navigation = () => {
+const Search = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
@@ -29,4 +29,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Search;

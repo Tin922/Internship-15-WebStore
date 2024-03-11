@@ -59,13 +59,17 @@ function ProductsPage() {
         </select>
       </div>
       <div className={classes.products_list}>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onClick={() => handleProductClick(product.id)}
-          />
-        ))}
+        {products.length === 0 ? (
+          <p>Nema rezultata za traženu pretragu</p>
+        ) : (
+          products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onClick={() => handleProductClick(product.id)}
+            />
+          ))
+        )}
       </div>
     </div>
   );
