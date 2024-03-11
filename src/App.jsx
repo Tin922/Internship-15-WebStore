@@ -1,8 +1,8 @@
 import React from "react";
-import Navigation from "./Components/Navigation";
+import Navigation from "./Components/Navigation/Navigation";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NotFoundPage from "./Pages/NotFoundPage";
-import ProductsPage from "./Pages/ProductsPage";
+import ProductsPage from "./Pages/ProductsPage/ProductsPage";
 import ProductPage from "./Pages/ProductPage";
 function App() {
   return (

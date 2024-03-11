@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import ProductPageCard from "../Components/ProductPageCard";
-import ProductCard from "../Components/ProductCard";
+import ProductCard from "../Components/ProductCard/ProductCard";
 
 const ProductPage = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const location = useLocation();
-  const relatedProducts = location.state.relatedProducts.filter(
-    (product) => product.id != productId
-  );
+  const navigate = useNavigate();
+  const [relatedProducts, setRelatedProducts] = useState([]);
   console.log(`Povezni proizovid su : ${relatedProducts}`);
 
   const fetchProduct = async () => {
@@ -23,17 +22,29 @@ const ProductPage = () => {
       console.error("Error fetching product:", error);
     }
   };
-
+  const fetchRelatedProducts = () => {
+    if (location.state && location.state.relatedProducts) {
+      setRelatedProducts(location.state.relatedProducts);
+    }
+  };
+  const handleProductClick = (productId) => {
+    navigate(`/product/${productId}`, { state: { relatedProducts } });
+  };
   useEffect(() => {
     fetchProduct();
-  }, []);
+    fetchRelatedProducts();
+  }, [location.state]);
   return (
     <>
       {product && <ProductPageCard product={product} />}
       <div>
         <p>Možda će vam se svidjeti</p>
         {relatedProducts.map((product) => (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard
+            product={product}
+            key={product.id}
+            onClick={() => handleProductClick(product.id)}
+          />
         ))}
       </div>
     </>

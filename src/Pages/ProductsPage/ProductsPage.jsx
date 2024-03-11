@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import ProductCard from "../Components/ProductCard";
+import ProductCard from "../../Components/ProductCard/ProductCard";
+import classes from "./index.module.css";
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -59,7 +60,7 @@ function ProductsPage() {
         <option value="Jewelery">Jewelery</option>
         <option value="Electronics">Electronics</option>
       </select>
-      <div className="product-list">
+      <div className={classes.products_list}>
         {products.map((product) => (
           <ProductCard
             key={product.id}
