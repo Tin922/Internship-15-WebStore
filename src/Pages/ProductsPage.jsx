@@ -4,7 +4,7 @@ import ProductCard from "../Components/ProductCard";
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);
-  let [initialFetchProducts, setInitialFetchProducts] = useState([]);
+  const [initialFetchProducts, setInitialFetchProducts] = useState([]);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [category, setCategory] = useState("");
@@ -40,7 +40,8 @@ function ProductsPage() {
   }, [category]);
 
   const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`);
+    const relatedProducts = products;
+    navigate(`/product/${productId}`, { state: { relatedProducts } });
   };
 
   return (
